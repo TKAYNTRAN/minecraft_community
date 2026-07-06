@@ -4,11 +4,16 @@ const path = require('path');
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 
-// Configure Supabase
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+// Configure Supabase (only if environment variables are set)
+let supabase;
+if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+} else {
+  console.warn('Supabase environment variables not set. Storage features will be disabled.');
+}
 
 const app = express();
 

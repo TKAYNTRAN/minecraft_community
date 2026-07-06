@@ -6,11 +6,16 @@ const pool = require('../config/database');
 const auth = require('../middleware/auth');
 const { createClient } = require('@supabase/supabase-js');
 
-// Configure Supabase for storage
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+// Configure Supabase for storage (only if environment variables are set)
+let supabase;
+if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+} else {
+  console.warn('Supabase environment variables not set. Storage features will be disabled.');
+}
 
 // Configure multer for memory storage (for Supabase upload)
 const storage = multer.memoryStorage();
