@@ -113,8 +113,8 @@ const PostDetail = () => {
     );
   }
 
-  const images = post.images ? post.images.filter(img => img !== null) : [];
-  const tags = post.tags ? post.tags.filter(tag => tag !== null) : [];
+  const images = Array.isArray(post.images) ? post.images.filter(img => img !== null) : [];
+  const tags = Array.isArray(post.tags) ? post.tags.filter(tag => tag !== null) : [];
   const isOwner = user && user.id === post.user_id;
   const isAdmin = user && user.role === 'admin';
 

@@ -26,9 +26,10 @@ const AdminDashboard = () => {
       const response = await axios.get('/api/posts/reports/all', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setReports(response.data);
+      setReports(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching reports:', error);
+      setReports([]);
     } finally {
       setLoading(false);
     }

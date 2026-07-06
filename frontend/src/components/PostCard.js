@@ -55,8 +55,8 @@ const PostCard = ({ post, onLike, user, showReport = true, clickable = true, tru
     setShowReportModal(true);
   };
 
-  const images = post.images ? post.images.filter(img => img !== null) : [];
-  const tags = post.tags ? post.tags.filter(tag => tag !== null) : [];
+  const images = Array.isArray(post.images) ? post.images.filter(img => img !== null) : [];
+  const tags = Array.isArray(post.tags) ? post.tags.filter(tag => tag !== null) : [];
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
