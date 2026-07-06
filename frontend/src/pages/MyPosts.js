@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -11,16 +11,7 @@ const MyPosts = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) {
-      navigate('/login');
-      return;
-    }
-
-    fetchMyPosts();
-  }, [user]);
-
-  const fetchMyPosts = async () => {
+  const fetchMyPosts = useCallback(async () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
@@ -33,7 +24,16 @@ const MyPosts = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+
+    fetchMyPosts();
+  }, [user, navigate, fetchMyPosts]);
 
   const handleDelete = async (postId) => {
     if (!window.confirm('Are you sure you want to delete this post?')) {
