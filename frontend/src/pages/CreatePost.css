@@ -1,0 +1,124 @@
+.create-post-page {
+  padding: 40px 0;
+}
+
+/* Dark Mode Create Post Card */
+body.dark-mode .create-post-card {
+  background-color: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .tag-button {
+  color: #eee;
+}
+
+body.dark-mode .auth-warning {
+  background-color: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode Create Post Card */
+body.light-mode .create-post-card {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .tag-button {
+  color: #333;
+}
+
+body.light-mode .auth-warning {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-post-card {
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.create-post-card h1 {
+  text-align: center;
+  color: #4ecca3;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #4ecca3;
+  font-weight: bold;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.file-input {
+  padding: 10px;
+}
+
+.image-preview {
+  margin-top: 10px;
+  color: #888;
+  font-size: 14px;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-button {
+  padding: 8px 16px;
+  border: 1px solid #4ecca3;
+  background-color: transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.tag-button:hover {
+  background-color: #4ecca3;
+  color: #1a1a2e;
+}
+
+.tag-button.active {
+  background-color: #4ecca3;
+  color: #1a1a2e;
+}
+
+.error-message {
+  background-color: #e74c3c;
+  color: white;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.auth-warning {
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-warning h2 {
+  color: #4ecca3;
+  margin-bottom: 15px;
+}
+
+.auth-warning p {
+  color: #888;
+}

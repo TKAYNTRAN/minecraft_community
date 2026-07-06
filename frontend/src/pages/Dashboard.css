@@ -1,0 +1,105 @@
+.dashboard-page {
+  padding: 20px 0;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+  color: #4ecca3;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  color: #888;
+  font-size: 18px;
+}
+
+/* Dark Mode Filters */
+body.dark-mode .filters-section {
+  background-color: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode Filters */
+body.light-mode .filters-section {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filters-section {
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #4ecca3;
+  font-weight: bold;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Dark Mode Tag Button */
+body.dark-mode .tag-button {
+  color: #eee;
+}
+
+/* Light Mode Tag Button */
+body.light-mode .tag-button {
+  color: #333;
+}
+
+.tag-button {
+  padding: 8px 16px;
+  border: 1px solid #4ecca3;
+  background-color: transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.tag-button:hover {
+  background-color: #4ecca3;
+  color: #1a1a2e;
+}
+
+.tag-button.active {
+  background-color: #4ecca3;
+  color: #1a1a2e;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 24px;
+  color: #888;
+  padding: 40px;
+}
+
+.no-posts {
+  text-align: center;
+  font-size: 24px;
+  color: #888;
+  padding: 40px;
+}

@@ -1,0 +1,254 @@
+.post-detail-page {
+  padding: 20px 0;
+}
+
+.back-button {
+  margin-bottom: 20px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 24px;
+  color: #888;
+  padding: 40px;
+}
+
+.error-message {
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 10px;
+}
+
+/* Dark Mode Error Message */
+body.dark-mode .error-message {
+  background-color: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode Error Message */
+body.light-mode .error-message {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error-message p {
+  color: #888;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.post-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .post-detail-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.post-detail-images {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detail-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.no-images {
+  padding: 60px 20px;
+  text-align: center;
+  color: #888;
+  border-radius: 10px;
+}
+
+/* Dark Mode No Images */
+body.dark-mode .no-images {
+  background-color: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode No Images */
+body.light-mode .no-images {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-detail-info {
+  padding: 30px;
+  border-radius: 10px;
+}
+
+/* Dark Mode Post Detail Info */
+body.dark-mode .post-detail-info {
+  background-color: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode Post Detail Info */
+body.light-mode .post-detail-info {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid;
+}
+
+/* Dark Mode Post Detail Header */
+body.dark-mode .post-detail-header {
+  border-bottom-color: #1a1a2e;
+}
+
+/* Light Mode Post Detail Header */
+body.light-mode .post-detail-header {
+  border-bottom-color: #e0e0e0;
+}
+
+.post-seed {
+  color: #4ecca3;
+  font-size: 32px;
+  margin: 0;
+}
+
+.post-version {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.post-version.public {
+  background-color: #4ecca3;
+  color: #1a1a2e;
+}
+
+.post-version.private {
+  background-color: #f39c12;
+  color: white;
+}
+
+.post-detail-meta {
+  margin-bottom: 20px;
+}
+
+.post-detail-meta p {
+  margin-bottom: 8px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* Light Mode Post Detail Meta */
+body.light-mode .post-detail-meta p {
+  color: #666;
+}
+
+.post-detail-meta strong {
+  color: #4ecca3;
+}
+
+.post-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.post-tag {
+  padding: 6px 12px;
+  background-color: #1a1a2e;
+  color: #4ecca3;
+  border-radius: 15px;
+  font-size: 12px;
+  border: 1px solid #4ecca3;
+}
+
+/* Light Mode Post Tag */
+body.light-mode .post-tag {
+  background-color: #f0f0f0;
+  color: #4ecca3;
+}
+
+.post-detail-description {
+  margin-bottom: 30px;
+}
+
+.post-detail-description h3 {
+  color: #4ecca3;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.post-detail-description p {
+  color: #ccc;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Light Mode Post Detail Description */
+body.light-mode .post-detail-description p {
+  color: #333;
+}
+
+.post-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid;
+}
+
+/* Dark Mode Post Detail Actions */
+body.dark-mode .post-detail-actions {
+  border-top-color: #1a1a2e;
+}
+
+/* Light Mode Post Detail Actions */
+body.light-mode .post-detail-actions {
+  border-top-color: #e0e0e0;
+}
+
+.btn-warning {
+  background-color: #f39c12;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #e67e22;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.btn-success {
+  background-color: #4ecca3;
+  color: #1a1a2e;
+}
+
+.btn-success:hover {
+  background-color: #45b894;
+}

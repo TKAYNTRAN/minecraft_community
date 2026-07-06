@@ -1,0 +1,98 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #4ecca3;
+  color: #1a1a2e;
+}
+
+.btn-primary:hover {
+  background-color: #45b894;
+}
+
+/* Dark Mode Button */
+body.dark-mode .btn-secondary {
+  background-color: #16213e;
+  color: #eee;
+  border: 1px solid #4ecca3;
+}
+
+body.dark-mode .btn-secondary:hover {
+  background-color: #1a1a2e;
+}
+
+/* Light Mode Button */
+body.light-mode .btn-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+  border: 1px solid #4ecca3;
+}
+
+body.light-mode .btn-secondary:hover {
+  background-color: #d0d0d0;
+}
+
+/* Dark Mode Input */
+body.dark-mode .input {
+  background-color: #16213e;
+  color: #eee;
+  border: 1px solid #16213e;
+}
+
+/* Light Mode Input */
+body.light-mode .input {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4ecca3;
+}
+
+/* Dark Mode Card */
+body.dark-mode .card {
+  background-color: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode Card */
+body.light-mode .card {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}

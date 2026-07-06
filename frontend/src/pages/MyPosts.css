@@ -1,0 +1,120 @@
+.my-posts-page {
+  padding: 20px 0;
+}
+
+.my-posts-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.my-posts-header h1 {
+  color: #4ecca3;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.my-posts-header p {
+  color: #888;
+  font-size: 18px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.my-post-card {
+  position: relative;
+}
+
+.post-actions {
+  display: flex;
+  gap: 10px;
+  padding: 15px 20px;
+  border-top: 1px solid;
+  margin-top: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Dark Mode Post Actions */
+body.dark-mode .post-actions {
+  background-color: #16213e;
+  border-top-color: #1a1a2e;
+}
+
+/* Light Mode Post Actions */
+body.light-mode .post-actions {
+  background-color: #ffffff;
+  border-top-color: #e0e0e0;
+}
+
+.visibility-btn {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.visibility-btn.public {
+  background-color: #4ecca3;
+  color: #1a1a2e;
+}
+
+.visibility-btn.private {
+  background-color: #f39c12;
+  color: white;
+}
+
+.visibility-btn:hover {
+  opacity: 0.8;
+}
+
+.delete-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #e74c3c;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.loading {
+  text-align: center;
+  font-size: 24px;
+  color: #888;
+  padding: 40px;
+}
+
+.no-posts {
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 10px;
+}
+
+/* Dark Mode No Posts */
+body.dark-mode .no-posts {
+  background-color: #16213e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode No Posts */
+body.light-mode .no-posts {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.no-posts p {
+  color: #888;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
