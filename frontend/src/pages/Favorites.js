@@ -18,9 +18,10 @@ const Favorites = () => {
       const response = await axios.get(`/api/users/${user.id}/likes`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setPosts(response.data);
+      setPosts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching favorites:', error);
+      setPosts([]);
     } finally {
       setLoading(false);
     }

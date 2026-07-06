@@ -41,9 +41,10 @@ const Dashboard = () => {
       params.append('sortBy', filters.sortBy);
 
       const response = await axios.get(`/api/posts?${params.toString()}`);
-      setPosts(response.data);
+      setPosts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching posts:', error);
+      setPosts([]);
     } finally {
       setLoading(false);
     }

@@ -18,9 +18,10 @@ const MyPosts = () => {
       const response = await axios.get(`/api/posts/user/${user.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setPosts(response.data);
+      setPosts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching my posts:', error);
+      setPosts([]);
     } finally {
       setLoading(false);
     }
