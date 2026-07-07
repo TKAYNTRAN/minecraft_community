@@ -22,7 +22,6 @@ const AdminDashboard = () => {
   const fetchReports = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('token');
       const response = await api.get('/api/posts/reports/all');
       setReports(Array.isArray(response.data) ? response.data : []);
     } catch (error) {

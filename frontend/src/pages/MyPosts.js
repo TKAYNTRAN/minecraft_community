@@ -14,7 +14,6 @@ const MyPosts = () => {
   const fetchMyPosts = useCallback(async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('token');
       const response = await api.get(`/api/posts/user/${user.id}`);
       setPosts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {

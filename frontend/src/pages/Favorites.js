@@ -14,7 +14,6 @@ const Favorites = () => {
   const fetchFavorites = useCallback(async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('token');
       const response = await api.get(`/api/users/${user.id}/likes`);
       setPosts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
