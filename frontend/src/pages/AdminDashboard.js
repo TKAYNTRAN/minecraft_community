@@ -35,7 +35,6 @@ const AdminDashboard = () => {
 
   const handleResolveReport = async (reportId) => {
     try {
-      const token = localStorage.getItem('token');
       await api.patch(`/api/posts/reports/${reportId}/resolve`);
       fetchReports();
     } catch (error) {
@@ -50,7 +49,6 @@ const AdminDashboard = () => {
     }
 
     try {
-      const token = localStorage.getItem('token');
       await api.delete(`/api/posts/${postId}`);
       fetchReports();
     } catch (error) {

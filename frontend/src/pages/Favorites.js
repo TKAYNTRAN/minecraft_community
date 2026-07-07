@@ -38,7 +38,6 @@ const Favorites = () => {
     if (!user) return;
     
     try {
-      const token = localStorage.getItem('token');
       await api.post(`/api/posts/${postId}/like`);
       fetchFavorites();
     } catch (error) {

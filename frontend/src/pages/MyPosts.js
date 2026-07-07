@@ -40,7 +40,6 @@ const MyPosts = () => {
     }
 
     try {
-      const token = localStorage.getItem('token');
       await api.delete(`/api/posts/${postId}`);
       fetchMyPosts();
     } catch (error) {
@@ -53,7 +52,6 @@ const MyPosts = () => {
     const newVisibility = currentVisibility === 'public' ? 'private' : 'public';
     
     try {
-      const token = localStorage.getItem('token');
       await api.patch(`/api/posts/${postId}/visibility`, 
         { visibility: newVisibility }
       );

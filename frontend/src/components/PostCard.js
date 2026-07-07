@@ -10,7 +10,6 @@ const PostCard = ({ post, onLike, user, showReport = true, clickable = true, tru
 
   const checkIfLiked = React.useCallback(async () => {
     try {
-      const token = localStorage.getItem('token');
       const response = await api.get(`/api/users/${user.id}/likes/${post.id}`);
       setLiked(response.data.liked);
     } catch (error) {
@@ -34,7 +33,6 @@ const PostCard = ({ post, onLike, user, showReport = true, clickable = true, tru
 
   const handleReport = async (reason) => {
     try {
-      const token = localStorage.getItem('token');
       await api.post(`/api/posts/${post.id}/report`, 
         { reason }
       );

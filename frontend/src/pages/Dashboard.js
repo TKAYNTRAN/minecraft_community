@@ -69,7 +69,6 @@ const Dashboard = () => {
     if (!user) return;
     
     try {
-      const token = localStorage.getItem('token');
       await api.post(`/api/posts/${postId}/like`);
       fetchPosts();
     } catch (error) {

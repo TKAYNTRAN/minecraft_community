@@ -33,7 +33,6 @@ const PostDetail = () => {
     if (!user) return;
     
     try {
-      const token = localStorage.getItem('token');
       await api.post(`/api/posts/${id}/like`);
       fetchPost();
     } catch (error) {
@@ -50,7 +49,6 @@ const PostDetail = () => {
     }
 
     try {
-      const token = localStorage.getItem('token');
       await api.delete(`/api/posts/${id}`);
       navigate('/');
     } catch (error) {
@@ -63,7 +61,6 @@ const PostDetail = () => {
     const newVisibility = post.visibility === 'public' ? 'private' : 'public';
     
     try {
-      const token = localStorage.getItem('token');
       await api.patch(`/api/posts/${id}/visibility`, 
         { visibility: newVisibility }
       );
