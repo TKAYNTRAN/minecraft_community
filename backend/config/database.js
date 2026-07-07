@@ -4,7 +4,9 @@ require('dotenv').config();
 // Use DATABASE_URL for both local and Supabase
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
+  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
+  // Force IPv4 to avoid IPv6 connection issues
+  family: 4
 });
 
 // Test connection
