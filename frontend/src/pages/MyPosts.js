@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import PostCard from '../components/PostCard';
 import './MyPosts.css';
 
@@ -15,9 +15,7 @@ const MyPosts = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const response = await axios.get(`/api/posts/user/${user.id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await api.get(`/api/posts/user/${user.id}`);
       setPosts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching my posts:', error);
@@ -43,9 +41,7 @@ const MyPosts = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`/api/posts/${postId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      await api.delete(`/api/posts/${postId}`);
       fetchMyPosts();
     } catch (error) {
       console.error('Error deleting post:', error);
@@ -58,9 +54,8 @@ const MyPosts = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`/api/posts/${postId}/visibility`, 
-        { visibility: newVisibility },
-        { headers: { Authorization: `Bearer ${token}` } }
+      await api.patch(`/api/posts/${postId}/visibility`, 
+        { visibility: newVisibility }
       );
       fetchMyPosts();
     } catch (error) {

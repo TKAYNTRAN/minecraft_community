@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 import './Register.css';
 
 const Register = () => {
@@ -57,7 +57,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('/api/auth/register', {
+      const response = await api.post('/api/auth/register', {
         username: formData.username,
         email: formData.email,
         password: formData.password

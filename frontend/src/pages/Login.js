@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 import './Login.css';
 
 const Login = () => {
@@ -25,7 +25,7 @@ const Login = () => {
     setError('');
     
     try {
-      const response = await axios.post('/api/auth/login', formData);
+      const response = await api.post('/api/auth/login', formData);
       login(response.data.token, response.data.user);
       navigate('/');
     } catch (err) {

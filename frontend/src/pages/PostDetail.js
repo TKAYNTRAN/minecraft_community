@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 import './PostDetail.css';
 
 const PostDetail = () => {
@@ -15,7 +15,7 @@ const PostDetail = () => {
   const fetchPost = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`/api/posts/${id}`);
+      const response = await api.get(`/api/posts/${id}`);
       setPost(response.data);
     } catch (error) {
       console.error('Error fetching post:', error);
@@ -34,9 +34,7 @@ const PostDetail = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`/api/posts/${id}/like`, {}, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      await api.post(`/api/posts/${id}/like`);
       fetchPost();
     } catch (error) {
       console.error('Error liking post:', error);
@@ -53,9 +51,7 @@ const PostDetail = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`/api/posts/${id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      await api.delete(`/api/posts/${id}`);
       navigate('/');
     } catch (error) {
       console.error('Error deleting post:', error);
@@ -68,9 +64,8 @@ const PostDetail = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`/api/posts/${id}/visibility`, 
-        { visibility: newVisibility },
-        { headers: { Authorization: `Bearer ${token}` } }
+      await api.patch(`/api/posts/${id}/visibility`, 
+        { visibility: newVisibility }
       );
       fetchPost();
     } catch (error) {

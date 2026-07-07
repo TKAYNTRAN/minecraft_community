@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import PostCard from '../components/PostCard';
 import './Favorites.css';
 
@@ -15,9 +15,7 @@ const Favorites = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const response = await axios.get(`/api/users/${user.id}/likes`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await api.get(`/api/users/${user.id}/likes`);
       setPosts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching favorites:', error);
@@ -41,9 +39,7 @@ const Favorites = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`/api/posts/${postId}/like`, {}, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      await api.post(`/api/posts/${postId}/like`);
       fetchFavorites();
     } catch (error) {
       console.error('Error liking post:', error);

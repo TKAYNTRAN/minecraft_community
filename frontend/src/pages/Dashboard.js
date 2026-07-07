@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 import PostCard from '../components/PostCard';
 import './Dashboard.css';
 
@@ -40,7 +40,7 @@ const Dashboard = () => {
       if (filters.tags.length > 0) params.append('tags', filters.tags.join(','));
       params.append('sortBy', filters.sortBy);
 
-      const response = await axios.get(`/api/posts?${params.toString()}`);
+      const response = await api.get(`/api/posts?${params.toString()}`);
       setPosts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching posts:', error);
@@ -70,9 +70,7 @@ const Dashboard = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`/api/posts/${postId}/like`, {}, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      await api.post(`/api/posts/${postId}/like`);
       fetchPosts();
     } catch (error) {
       console.error('Error liking post:', error);

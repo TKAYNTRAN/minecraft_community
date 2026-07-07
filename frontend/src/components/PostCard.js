@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import './PostCard.css';
 
 const PostCard = ({ post, onLike, user, showReport = true, clickable = true, truncateDescription = true }) => {
@@ -11,9 +11,7 @@ const PostCard = ({ post, onLike, user, showReport = true, clickable = true, tru
   const checkIfLiked = React.useCallback(async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`/api/users/${user.id}/likes/${post.id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await api.get(`/api/users/${user.id}/likes/${post.id}`);
       setLiked(response.data.liked);
     } catch (error) {
       console.error('Error checking like status:', error);
@@ -37,9 +35,8 @@ const PostCard = ({ post, onLike, user, showReport = true, clickable = true, tru
   const handleReport = async (reason) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`/api/posts/${post.id}/report`, 
-        { reason },
-        { headers: { Authorization: `Bearer ${token}` } }
+      await api.post(`/api/posts/${post.id}/report`, 
+        { reason }
       );
       setShowReportModal(false);
       alert('Post reported successfully');

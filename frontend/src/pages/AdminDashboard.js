@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -23,9 +23,7 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const response = await axios.get('/api/posts/reports/all', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await api.get('/api/posts/reports/all');
       setReports(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching reports:', error);
@@ -38,9 +36,7 @@ const AdminDashboard = () => {
   const handleResolveReport = async (reportId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`/api/posts/reports/${reportId}/resolve`, {}, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      await api.patch(`/api/posts/reports/${reportId}/resolve`);
       fetchReports();
     } catch (error) {
       console.error('Error resolving report:', error);
@@ -55,9 +51,7 @@ const AdminDashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`/api/posts/${postId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      await api.delete(`/api/posts/${postId}`);
       fetchReports();
     } catch (error) {
       console.error('Error deleting post:', error);

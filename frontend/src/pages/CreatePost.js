@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 import './CreatePost.css';
 
 const CreatePost = () => {
@@ -97,11 +97,9 @@ const CreatePost = () => {
         data.append('images', image);
       });
 
-      const token = localStorage.getItem('token');
-      await axios.post('/api/posts', data, {
+      await api.post('/api/posts', data, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`
+          'Content-Type': 'multipart/form-data'
         }
       });
 
