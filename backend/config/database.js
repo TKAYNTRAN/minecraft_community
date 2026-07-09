@@ -1,5 +1,9 @@
 const { Pool } = require('pg');
+const dns = require('dns');
 require('dotenv').config();
+
+// Force DNS to use IPv4 only
+dns.setDefaultResultOrder('ipv4first');
 
 // Parse DATABASE_URL to force IPv4 connection
 let poolConfig;
