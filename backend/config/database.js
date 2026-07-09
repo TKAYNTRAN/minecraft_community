@@ -12,10 +12,8 @@ if (process.env.DATABASE_URL) {
   // Parse connection string and force IPv4
   const dbUrl = new URL(process.env.DATABASE_URL);
   poolConfig = {
-    // Use IPv4 address directly to avoid IPv6 resolution
-    host: 'aws-0-ap-southeast-1.pooler.supabase.com',
-    // Use Supabase connection pooling port (6543) instead of direct port (5432)
-    port: 6543,
+    host: dbUrl.hostname,
+    port: 5432,
     database: dbUrl.pathname.slice(1), // Remove leading slash
     user: dbUrl.username,
     password: dbUrl.password,
