@@ -13,7 +13,8 @@ if (process.env.DATABASE_URL) {
   const dbUrl = new URL(process.env.DATABASE_URL);
   poolConfig = {
     host: dbUrl.hostname,
-    port: dbUrl.port || 5432,
+    // Use Supabase connection pooling port (6543) instead of direct port (5432)
+    port: 6543,
     database: dbUrl.pathname.slice(1), // Remove leading slash
     user: dbUrl.username,
     password: dbUrl.password,
