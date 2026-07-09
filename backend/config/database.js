@@ -5,29 +5,11 @@ require('dotenv').config();
 // Force DNS to use IPv4 only
 dns.setDefaultResultOrder('ipv4first');
 
-// Parse DATABASE_URL to force IPv4 connection
-let poolConfig;
-
-if (process.env.DATABASE_URL) {
-  // Parse connection string and force IPv4
-  const dbUrl = new URL(process.env.DATABASE_URL);
-  poolConfig = {
-    host: dbUrl.hostname,
-    port: 5432,
-    database: dbUrl.pathname.slice(1), // Remove leading slash
-    user: dbUrl.username,
-    password: dbUrl.password,
-    ssl: { rejectUnauthorized: false },
-    // Force IPv4
-    family: 4
-  };
-} else {
-  poolConfig = {
-    connectionString: process.env.DATABASE_URL
-  };
-}
-
-const pool = new Pool(poolConfig);
+// Use connection string with IPv4 parameters
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL + '?sslmode=require',
+  ssl: { rejectUnauthorized: false }
+});
 
 // Test connection
 pool.on('connect', () => {
